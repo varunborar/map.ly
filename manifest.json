@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Map.ly",
+  "version": "1.0.0",
+  "description": "Link Management Extension. Map keys to URLs.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "omnibox": {
+    "keyword": "mp"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "assets/icon/icon.webp",
+    "48": "assets/icon/icon.webp",
+    "128": "assets/icon/icon.webp"
+  }
+}
