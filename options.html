@@ -1,175 +1,64 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Map.ly URL Mapping Options</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-            position: relative;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        h1,
-        h2 {
-            text-align: center;
-            color: #343a40;
-        }
-
-        form {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        form>div {
-            flex: 1 1 48%;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #495057;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-        }
-
-        button.submit-btn {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-        }
-
-        button.submit-btn:hover {
-            background-color: #0069d9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #dee2e6;
-            text-align: left;
-        }
-
-        th {
-            background-color: #e9ecef;
-        }
-
-        .actions button {
-            background-color: #dc3545;
-            border: none;
-            color: #fff;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .actions button:hover {
-            background-color: #c82333;
-        }
-
-        /* Toolbar for Import/Export icons */
-        .toolbar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .toolbar button {
-            cursor: pointer;
-            padding: 5px;
-            margin: 10px;
-        }
-
-        .toolbar button{
-            width: 68px;
-            height: 24px;
-            fill: #007bff;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Map.ly URL Mapping Options</title>
+  <link rel="stylesheet" href="assets/css/options.css">
 </head>
-
 <body>
-    <div class="container">
-        <!-- Toolbar with Import/Export Icons -->
-        <div class="toolbar">
-            <!-- Export Button -->
-            <button id="exportBtn" title="Export Mappings">
-                Export
-            </button>
-            <!-- Import Button -->
-            <button id="importBtn" title="Import Mappings">
-                Import
-            </button>
-            <!-- Hidden file input triggered by the Import button -->
-            <input type="file" id="importFile" accept=".json" style="display: none;">
-        </div>
-
-        <h1>MP URL Mapping Options</h1>
-        <form id="mappingForm">
-            <div>
-                <label for="key">Mapping Key</label>
-                <input type="text" id="key" name="key" placeholder="e.g. product" required>
-            </div>
-            <div>
-                <label for="template">URL Template</label>
-                <input type="text" id="template" name="template" placeholder="e.g. https://ex.com/browse/%s/id/%s"
-                    required>
-            </div>
-            <div>
-                <button type="submit" class="submit-btn">Add / Update Mapping</button>
-            </div>
-        </form>
-
-        <h2>Existing Mappings</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Key</th>
-                    <th>URL Template</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="mappingsTable">
-                <!-- Mapping rows will be inserted here dynamically -->
-            </tbody>
-        </table>
+  <div class="container">
+    <div class="toolbar">
+      <!-- Export Button -->
+      <button id="exportBtn" title="Export Mappings">Export</button>
+      <!-- Import Button -->
+      <button id="importBtn" title="Import Mappings">Import</button>
+      <!-- Hidden file input triggered by the Import button -->
+      <input type="file" id="importFile" accept=".json" hidden>
     </div>
-    <script src="options.js"></script>
+    
+    <h1>Map.ly Settings</h1>
+    
+    <form id="mappingForm">
+      <div class="form-group">
+        <label for="key">Mapping Key</label>
+        <input type="text" id="key" name="key" placeholder="e.g. product" required>
+      </div>
+      <div class="form-group">
+        <label for="template">URL Template</label>
+        <input type="text" id="template" name="template" placeholder="e.g. https://ex.com/browse/%s/id/%s" required>
+      </div>
+      <div class="form-group full-width">
+        <button type="submit" class="submit-btn">Add / Update Mapping</button>
+      </div>
+    </form>
+    
+    <!-- Preferences Section -->
+    <h2>Preferences</h2>
+    <form id="preferencesForm">
+      <div class="form-group">
+        <label for="customShortcut">Custom Shortcut for Options Page</label>
+        <input type="text" id="customShortcut" name="customShortcut" placeholder="e.g. opt, settings">
+      </div>
+      <div class="form-group full-width">
+        <button type="submit" class="submit-btn">Save Preferences</button>
+      </div>
+    </form>
+    
+    <h2>Existing Mappings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>URL Template</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="mappingsTable">
+        <!-- Mapping rows will be inserted here dynamically -->
+      </tbody>
+    </table>
+  </div>
+  <script type="module" src="options.js"></script>
 </body>
-
 </html>

@@ -11,12 +11,13 @@
     "keyword": "mp"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "options_page": "options.html",
   "icons": {
-    "16": "assets/icon/icon.webp",
-    "48": "assets/icon/icon.webp",
-    "128": "assets/icon/icon.webp"
+    "16": "assets/icon/icon16.png",
+    "48": "assets/icon/icon48.png",
+    "128": "assets/icon/icon128.png"
   }
 }
