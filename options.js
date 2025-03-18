@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
     document.getElementById('importFile').addEventListener('change', importMappings);
     document.getElementById('saveAllDataBtn').addEventListener('click', saveAllData);
+    document.getElementById('loadAllDataBtn').addEventListener('click', () =>
+        document.getElementById('importDataFile').click()
+    );
+    document.getElementById('importDataFile').addEventListener('change', loadAllData);
+
 
     const mappingForm = document.getElementById('mappingForm');
     mappingForm.addEventListener('submit', async (e) => {
@@ -142,6 +147,41 @@ const saveAllData = async () => {
     downloadLink.click();
     document.body.removeChild(downloadLink);
     URL.revokeObjectURL(url);
+}
+
+const loadAllData = async (event) => {
+    const fileInput = event.target;
+    if (fileInput.files.length === 0) {
+        alert('Please select a JSON file to import.');
+        return;
+    }
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+        let importedData;
+        try {
+            importedData = JSON.parse(e.target.result);
+        } catch (error) {
+            alert('Error parsing JSON file. Please ensure it is valid JSON.');
+            return;
+        }
+        if (typeof importedData !== 'object' || importedData === null) {
+            alert('Imported data is not a valid object.');
+            return;
+        }
+        const { mappings, preferences } = importedData;
+        if (mappings) {
+            await updateMappings(mappings);
+            await loadMappings();
+        }
+        if (preferences) {
+            await updatePreferences(preferences);
+            await loadPreferences();
+        }
+        fileInput.value = '';
+        alert('Data imported and updated successfully.');
+    };
+    reader.readAsText(file);
 }
 
 const loadPreferences = async () => {
