@@ -1,64 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map.ly URL Mapping Options</title>
-  <link rel="stylesheet" href="assets/css/options.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Map.ly URL Mapping Options</title>
+    <link rel="stylesheet" href="assets/css/options.css">
 </head>
+
 <body>
-  <div class="container">
-    <div class="toolbar">
-      <!-- Export Button -->
-      <button id="exportBtn" title="Export Mappings">Export</button>
-      <!-- Import Button -->
-      <button id="importBtn" title="Import Mappings">Import</button>
-      <!-- Hidden file input triggered by the Import button -->
-      <input type="file" id="importFile" accept=".json" hidden>
+    <div class="container">
+        <div class="toolbar">
+            <button id="exportBtn" title="Export Mappings">Export</button>
+            <button id="importBtn" title="Import Mappings">Import</button>
+            <input type="file" id="importFile" accept=".json" hidden>
+            <button id="saveAllDataBtn" title="Save all data in JSON format">Save</button>
+        </div>
+
+        <h1>Map.ly Settings</h1>
+
+        <form id="mappingForm">
+            <div class="form-group">
+                <label for="key">Mapping Key</label>
+                <input type="text" id="key" name="key" placeholder="e.g. product" required>
+            </div>
+            <div class="form-group">
+                <label for="template">URL Template</label>
+                <input type="text" id="template" name="template" placeholder="e.g. https://ex.com/browse/%s/{{id}}"
+                    required>
+            </div>
+            <div class="form-group full-width">
+                <button type="submit" class="submit-btn">Add / Update Mapping</button>
+            </div>
+        </form>
+
+        <!-- Preferences Section -->
+        <h2>Preferences</h2>
+        <form id="preferencesForm">
+            <div class="preference-section">
+                <div class="preference-row">
+                    <label for="customShortcut">Custom Shortcut for Options Page</label>
+                    <input type="text" id="customShortcut" name="customShortcut" placeholder="e.g. opt, settings">
+                </div>
+                <div class="preference-row">
+                    <label for="suggestBookmarks">Suggest Bookmarks</label>
+                    <input type="checkbox" id="suggestBookmarks" name="suggestBookmarks">
+                </div>
+                <div class="preference-row", id="bookmarkShortcutRow">
+                    <label for="bookmarkShortcut">Bookmark Shortcut</label>
+                    <input type="text" id="bookmarkShortcut" name="bookmarkShortcut" placeholder="e.g. !b, @b">
+                </div>
+                <div class="preference-row", id="rootBookmarkNodeRow">
+                    <label for="rootBookmarkNode">Root Bookmark Node</label>
+                    <input type="text" id="rootBookmarkNode" name="rootBookmarkNode" placeholder="e.g. Other Bookmarks">
+                </div>
+                <div class="preference-row">
+                    <button type="submit" class="submit-btn">Save Preferences</button>
+                </div>
+            </div>
+        </form>
+
+
+
+        <h2>Existing Mappings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>URL Template</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="mappingsTable">
+                <!-- Mapping rows will be inserted here dynamically -->
+            </tbody>
+        </table>
     </div>
-    
-    <h1>Map.ly Settings</h1>
-    
-    <form id="mappingForm">
-      <div class="form-group">
-        <label for="key">Mapping Key</label>
-        <input type="text" id="key" name="key" placeholder="e.g. product" required>
-      </div>
-      <div class="form-group">
-        <label for="template">URL Template</label>
-        <input type="text" id="template" name="template" placeholder="e.g. https://ex.com/browse/%s/id/%s" required>
-      </div>
-      <div class="form-group full-width">
-        <button type="submit" class="submit-btn">Add / Update Mapping</button>
-      </div>
-    </form>
-    
-    <!-- Preferences Section -->
-    <h2>Preferences</h2>
-    <form id="preferencesForm">
-      <div class="form-group">
-        <label for="customShortcut">Custom Shortcut for Options Page</label>
-        <input type="text" id="customShortcut" name="customShortcut" placeholder="e.g. opt, settings">
-      </div>
-      <div class="form-group full-width">
-        <button type="submit" class="submit-btn">Save Preferences</button>
-      </div>
-    </form>
-    
-    <h2>Existing Mappings</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>URL Template</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="mappingsTable">
-        <!-- Mapping rows will be inserted here dynamically -->
-      </tbody>
-    </table>
-  </div>
-  <script type="module" src="options.js"></script>
+    <script type="module" src="options.js"></script>
 </body>
+
 </html>

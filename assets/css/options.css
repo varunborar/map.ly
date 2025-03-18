@@ -140,3 +140,64 @@ th {
     flex: 1 1 100%;
   }
 }
+
+/* Container for all preference settings */
+.preference-section {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Each preference appears in its own row */
+.preference-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.preference-row:last-child {
+  border-bottom: none;
+}
+
+/* Label occupies fixed width */
+.preference-row label {
+  flex: 0 0 40%;
+  font-weight: 400;
+  color: #495057;
+}
+
+/* Input occupies remaining space */
+.preference-row input[type="text"] {
+  flex: 0 0 30%;
+}
+
+.preference-row input[type="checkbox"] {
+  flex: 0 0 5%;
+  width: 18px;
+  height: 18px;
+}
+
+/* Button spans full row if desired */
+.preference-row button.submit-btn {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.preference-row button.submit-btn:hover {
+  background-color: #0069d9;
+}
+
+.hidden {
+  display: none;
+}

@@ -5,7 +5,8 @@
   "description": "Link Management Extension. Map keys to URLs.",
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "bookmarks"
   ],
   "omnibox": {
     "keyword": "mp"
