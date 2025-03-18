@@ -10,11 +10,10 @@
 
 <body>
     <div class="container">
-        <div class="toolbar">
-            <button id="exportBtn" title="Export Mappings">Export</button>
-            <button id="importBtn" title="Import Mappings">Import</button>
-            <input type="file" id="importFile" accept=".json" hidden>
+        <div class="toolbar settings">
             <button id="saveAllDataBtn" title="Save all data in JSON format">Save</button>
+            <button id="loadAllDataBtn" title="Save all data in JSON format">Load</button>
+            <input type="file" id="importDataFile" accept=".json" hidden>
         </div>
 
         <h1>Map.ly Settings</h1>
@@ -63,6 +62,11 @@
 
 
         <h2>Existing Mappings</h2>
+        <div class="toolbar mappings">
+            <button id="exportBtn" title="Export Mappings">Export</button>
+            <button id="importBtn" title="Import Mappings">Import</button>
+            <input type="file" id="importFile" accept=".json" hidden>
+        </div>
         <table>
             <thead>
                 <tr>
